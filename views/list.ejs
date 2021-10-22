@@ -1,0 +1,40 @@
+<html>
+    <table style="margin: auto;border: solid orange 1px;padding: 10px;" >
+        <tr>
+            <td> 
+                <label>ID</label>
+            </td>
+            <td> 
+                <label>Name</label>
+            </td>
+            <td> 
+                <label>Description</label>
+            </td>
+            <td> 
+                <label>Creation Date</label>
+            </td>
+            <td> 
+                <label>Price</label>
+            </td>
+        </tr>
+        <% productsList.forEach(function(product) { %>
+            <tr>
+                <td> 
+                    <span><%= product.id %></span>
+                </td>
+                <td> 
+                    <span><%= product.name %></span>
+                </td>
+                <td> 
+                    <span><%= product.description %></span>
+                </td>
+                <td> 
+                    <span><%= product.creation_date %></span>
+                </td>
+                <td> 
+                    <span><%= product.price %></span>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</html>
