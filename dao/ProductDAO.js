@@ -25,6 +25,24 @@ module.exports = {
 
     create : (product) => {
         let products = FAKE_DB.products;
+
+        if (typeof(product.name) != 'string') {
+            throw new Error("BAD_PARAMETERS - Name is not a string")
+        } else {
+            if (product.name.length < 3 || product.name.length > 100) {
+                throw new Error("BAD_PARAMETERS - Name must be between 3 and 100 characters")
+            }
+        }
+
+
+        if (typeof(Number(product.price)) != 'number') {
+            throw new Error("BAD_PARAMETERS - Price must be a number")
+        } else {
+            if (Number(product.price) < 0) {
+                throw new Error("BAD_PARAMETERS - Price must be superior to 0")
+            }
+        }
+
         product._id = uuid()
         product.creation_date = new Date().toString();
         products.push(product);
