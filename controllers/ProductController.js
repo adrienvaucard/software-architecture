@@ -17,4 +17,17 @@ module.exports = {
             productsList: productsList
         });
     },
+
+    createForm : (req, res) => {
+        res.render('createProduct');
+    },
+
+    create : (req, res) => {
+        try {
+            productService.create(req.body);
+            res.redirect('/product/list');
+        }catch(e){
+            res.render('createProduct' , {message : e.message});
+        }
+    },
 }

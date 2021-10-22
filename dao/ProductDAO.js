@@ -1,5 +1,6 @@
 let PRODUCT_COUNT = 0
 const arrayCompare = require('../utils/arrayCompare')
+const { uuid } = require('uuidv4');
 
 module.exports = {
     list: () => {
@@ -22,8 +23,11 @@ module.exports = {
         return foundProducts;
     },
 
-    // create : (user) => {
-    //     user._id = -1;
-    //     FAKE_DB.users.push(user);
-    // }
+    create : (product) => {
+        let products = FAKE_DB.products;
+        product._id = uuid()
+        product.creation_date = new Date().toString();
+        products.push(product);
+        return products;
+    }
 }

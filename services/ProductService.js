@@ -17,4 +17,8 @@ module.exports = {
     listByPrice : () => {
         return productDAO.listByPrice()
     },
+
+    create: (product) => {
+        return productDAO.create(product)
+    }
 }
