@@ -30,4 +30,29 @@ module.exports = {
             res.render('createProduct' , {message : e.message});
         }
     },
+
+    editForm : (req, res) => {
+        if (!req.params.id) throw new Error("None ID specified")
+        let foundProduct = productService.findById(req.params.id)
+
+        res.render('editProduct', {
+            product : foundProduct
+        });
+    },
+
+    edit : (req, res) => {
+        console.log(req.params.id)
+        let foundProduct = productService.findById(req.params.id)
+
+        try {
+            productService.edit(req.params.id, foundProduct);
+            res.redirect('/product/list');
+        } catch(e){
+            console.log(e)
+            res.render('editProduct' , {
+                message : e.message,
+                product : foundProduct
+            });
+        }
+    },
 }

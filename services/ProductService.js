@@ -18,7 +18,15 @@ module.exports = {
         return productDAO.listByPrice()
     },
 
+    findById : (id) => {
+        return productDAO.findById(id)
+    },
+
     create: (product) => {
         return productDAO.create(product)
+    },
+
+    edit: (id, product) => {
+        return productDAO.edit(id, product)
     }
 }
